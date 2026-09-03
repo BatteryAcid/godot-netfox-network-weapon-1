@@ -3,17 +3,7 @@
 [ext_resource type="Script" uid="uid://ddkhweotm8c4d" path="res://scripts/projectile.gd" id="1_c8fcr"]
 [ext_resource type="SpriteFrames" uid="uid://cuo2tavbvbfcv" path="res://assets/projectile_sprite_frames.tres" id="2_q3m7n"]
 [ext_resource type="Script" uid="uid://s5sn2tc115ng" path="res://scripts/components/hitbox_component.gd" id="3_softn"]
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_q3m7n"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:flip_dir")
-properties/1/spawn = true
-properties/1/replication_mode = 0
-properties/2/path = NodePath(".:fired_by_name")
-properties/2/spawn = true
-properties/2/replication_mode = 0
+[ext_resource type="Script" uid="uid://dour8fehaaugp" path="res://addons/netfox/tick-interpolator.gd" id="4_6q2a6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q3m7n"]
 radius = 12.0
@@ -22,9 +12,6 @@ height = 90.0
 [node name="Projectile" type="Node2D" unique_id=455288657 node_paths=PackedStringArray("projectile_sprite")]
 script = ExtResource("1_c8fcr")
 projectile_sprite = NodePath("AnimatedSprite2D")
-
-[node name="ProjectileSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1157273825]
-replication_config = SubResource("SceneReplicationConfig_q3m7n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1348571173]
 scale = Vector2(0.5, 0.5)
@@ -40,3 +27,9 @@ metadata/_custom_type_script = "uid://s5sn2tc115ng"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1745249193]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_q3m7n")
+
+[node name="TickInterpolator" type="Node" parent="." unique_id=1531531521 node_paths=PackedStringArray("root")]
+script = ExtResource("4_6q2a6")
+root = NodePath("..")
+properties = Array[String]([":position"])
+metadata/_custom_type_script = "uid://dour8fehaaugp"
