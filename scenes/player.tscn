@@ -70,10 +70,7 @@ script = ExtResource("4_dqkch")
 player_input = NodePath("../PlayerInput")
 projectile = ExtResource("5_qlg0r")
 projectile_spawn_path = NodePath("../Projectiles")
-
-[node name="ProjectileSpawner" type="MultiplayerSpawner" parent="Weapon" unique_id=552364528]
-_spawnable_scenes = PackedStringArray("uid://cc3hgxo55hou7")
-spawn_path = NodePath("../../Projectiles")
+distance_threshold = 100.0
 
 [node name="Projectiles" type="Node2D" parent="." unique_id=1273389197]
 top_level = true
